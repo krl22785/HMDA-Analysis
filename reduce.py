@@ -9,28 +9,31 @@ def parseInput():
 def reduce(): 
 	current_key = None 
 	current_count = 0 
-	current_sum = 0 
+	current_sum = 0
+ 
 	for key, value in parseInput():
 	
-		value = eval(value) 	
-		print value
-		#mortgage_amount = int(value[0])
-		#mortgage_count = int(value[1])  		
+		value = eval(value)
+		
+		try:	
+			mortgage_sum = int(value[0])
+			mortgage_count = int(value[1])  		
+		except:
+			pass
 
-		#if key == current_key:
-		#	print 'ok'
-			#current_count += mortgage_count
-			#current_sum += mortgage_sum 
-		#else:
-		#	if current_key:
-		#		print "%s\t%d, %d" % (key, current_sum, current_count) 
-		#	current_key = key 
-			#current_count = int(value[1]) 
-			#current_count = int(value[0]) 
-		#	print value[0], value[1]	
+		if key == current_key:
+			current_sum += mortgage_sum 
+			current_count += mortgage_count		
+		else:
+			if current_key:
+				print "%s\t%d, %d" % (current_key, current_sum, current_count) 
 			
-	
-
-
+			try: 
+				current_key = key 
+				current_sum = int(value[0])
+				current_count = int(value[1]) 
+			except:
+				pass 
+							
 if __name__=='__main__':
 	reduce()  
