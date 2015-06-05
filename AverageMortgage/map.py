@@ -22,14 +22,19 @@ def mapper():
 			county = record[26] 
 			census_tract = record[34]
 			year = record[35]
-					
-			key = (state, msa, county, census_tract, year) 
-				
-			amount = record[6]
+			
+			loan_purpose = record[19] 
+			action_taken = record[46]
+			
+			lien_status = record[20] 
 
-			value = (amount, 1) 
-						
-			print "%s\t%s" % (key,value)  
+			if loan_purpose == 'Home purchase' and action_taken == 'Loan originated' and lien_status == 'Secured by a first lien':   
+				key = (state, msa, county, census_tract, year) 	
+				amount = record[6]
+				value = (amount, 1) 
+				print "%s\t%s" % (key,value)  
+			else:
+				pass 
 		else:
 			pass 		
 
