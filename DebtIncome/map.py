@@ -29,9 +29,13 @@ def mapper():
 			action_taken = record[46]	
 			lien_status = record[20] 
 
-			if loan_purpose == 'Home purchase' and /action_taken == 'Loan originated' and lien_status == 'Secured by a first lien' and property_type == 'One-to-four family dwelling (other than manufactured housing)':
+			if loan_purpose == 'Home purchase' and \
+				action_taken == 'Loan originated' and \
+				lien_status == 'Secured by a first lien' and \
+				property_type == 'One-to-four family dwelling (other than manufactured housing)' and \
+				msa != '':
    
-				key = (state, msa, county, census_tract, year) 	
+				key = (state, msa, county, year) 	
 				amount = record[6]
 				income = record[8] 
 				value = (amount, income, 1) 
