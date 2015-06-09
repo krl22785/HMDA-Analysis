@@ -10,7 +10,7 @@ def reduce():
 	current_key = None
 	current_count = 0
 	current_sum = 0
-
+	
 	for key, value in parseInput():
 		value = eval(value) 
 		
@@ -22,8 +22,11 @@ def reduce():
 			current_count += mortgage_count
 		else:
 			if current_key:
-				avg_mortgage = float(current_sum)/float(current_count)
-				print "%s\t%.2f" % (current_key, avg_mortgage)			
+				#print current_sum, current_count 
+				#avg_mortgage = float(current_sum)/float(current_count)
+				a, b, c, d, e = eval(key)
+				print "%s\t%s\t%s\t%s\t%s\t%s\t%s" % (a, b, c, d, e, current_sum, current_count) 
+				#print "%s\t%.2f" % (current_key, avg_mortgage)			
 	
 			current_key = key
 			current_sum = int(value[0])
