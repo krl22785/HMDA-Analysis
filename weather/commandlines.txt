@@ -1,0 +1,1 @@
+hadoop com.sun.tools.javac.Main *.java && jar cf application.jar *.class

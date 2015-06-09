@@ -1,5 +1,5 @@
 # HADOOP ENV
-JAVA_SOURCES=MaxTemperature.java
+JAVA_SOURCES=MaxTemperature.java MaxTemperatureMapper.java MaxTemperatureReducer.java
 OUTPUT_JAR=application.jar
 
 all: $(OUTPUT_JAR)

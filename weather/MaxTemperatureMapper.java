@@ -17,7 +17,7 @@ public class MaxTemperatureMapper
 		String line = value.toString();
 		String[] fields = line.split(",");
 		year = fields[1];
-		airTemperature = fields[2]; 
+		airTemperature = Integer.parseInt(fields[2]);
 		
 		if (year.length() == 8) {
 			context.write(new Text(year), new IntWritable(airTemperature));  
