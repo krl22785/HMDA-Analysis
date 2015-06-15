@@ -9,7 +9,9 @@ public static class DebtIncomeReducer extends <Text, Text, Text, Text> {
 	
 	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 		double debtAmount = 0.0; 
-		double incomeAmount = 0.0; 
+		double incomeAmount = 0.0;
+		double ratio; 
+		 
 		int sumCount = 0; 
 		
 		for (Text val: values) {
@@ -17,9 +19,9 @@ public static class DebtIncomeReducer extends <Text, Text, Text, Text> {
 			debtAmount += Double.parseDouble(numbers[0]);
 			incomeAmount += Double.parseDouble(numbers[1]); 
 			sumCount += Integer.parseInteger(numbers[2]); 
-			}		
-		result.set(
-	}
-
-
+			}
+		
+		ratio = debtAmount/incomeAmount;		
+		result.set(key, ratio); 
+		}	
 	}	

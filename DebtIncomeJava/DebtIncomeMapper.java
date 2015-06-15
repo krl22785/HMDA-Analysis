@@ -17,10 +17,10 @@ public class DebtIncomeMapper extends Mapper<Object, Text, Text, Text> {
 				keycombo.set(fields[9] + ":" + fields[17] + ":" + fields[26] + ":" + fields[35]);
 
 				if (fields[6].length() == 0) 
-					valuecombo.set("0:1"); 
+					valuecombo.set("0:0:1"); 
 				else
 					valuecombo.set(fields[6] + ":" + fields[8] + ":1"); 	
-			context.write(keycombo, valuecombo) 
+			context.write(keycombo, valuecombo)
 			}
 		}
 	
