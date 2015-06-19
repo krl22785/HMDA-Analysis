@@ -3,6 +3,9 @@ from pyspark import SparkContext
 import StringIO
 import csv
 
+# the csv file needs to be processed to remove Non-ASCII characters as Spark will break if that is not done
+
+
 def loadRecord(line):
 	input = StringIO.StringIO(line) 
 	reader = csv.reader(input) 
