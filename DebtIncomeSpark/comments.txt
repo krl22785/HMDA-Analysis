@@ -1,0 +1,7 @@
+hadoop fs -rm -r output
+spark-submit --name "Debt Income" DebtIncomeCUSP.py input/input.csv output
+yarn logs -applicationId application_1434841670481_0034
+
+NOTES:
+
+- do not set the 'master' variable (the first argument) of SparkContext, instead use keyword arguments (e.g. "appName='My App'").
