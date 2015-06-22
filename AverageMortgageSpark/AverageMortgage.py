@@ -18,7 +18,7 @@ def mapper(line):
 
 if __name__=='__main__': 
 
-	file = "../spark/hmda_sample3.csv"
+	file = "../../spark/hmda_sample3.csv"
 	sc = SparkContext("local", "Average Mortgage")
 
 	logData = sc.textFile(file).map(loadRecord).cache()
