@@ -23,5 +23,6 @@ if __name__=='__main__':
         print "Usage: DebtIncome <input path> <output path>"
         sys.exit(-1)
     sc = SparkContext(appName="Debt Income Ratio") # do not set 'master'
-    output = sc.textFile(sys.argv[1]).map(mapper).reduceByKey(lambda a, b: tuple(map(operator.add, a, b)));
-    output.mapValues(lambda x: x[0]/x[1]).saveAsTextFile(sys.argv[2])
+    output = sc.textFile(sys.argv[1]).map(mapper) #.reduceByKey(lambda a, b: tuple(map(operator.add, a, b)));
+    #output.mapValues(lambda x: x[0]/x[1]).saveAsTextFile(sys.argv[2])
+    output.saveAsTextFile(sys.argv[2]) 
