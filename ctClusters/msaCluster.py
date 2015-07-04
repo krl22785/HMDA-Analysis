@@ -44,14 +44,23 @@ def mapper(line):
 
 if __name__=='__main__': 
 
-	file = "hmda_sample.csv"
-	sc = SparkContext("local", "MSA Cluster")
-
-	data = sc.textFile(file).map(mapper)	
+	if len(sys.argv) != 3: 
+		print "Usage: msaCluster <input path> <output path>" 
+		sys.exit(-1) 
 	
-	data_output = data.reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1], x[2] + y[2], x[3] + y[3]))
+	sc = SparkContext(appName = "MSA Features") 
+	msa_data = sc.textFile(sys.argv[1]).map(mapper)	
+	msa_data_grouped = msa_data.reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1], x[2] + y[2], x[3] + y[3]))
+	
 
-	for i, j in enumerate(data_output.collect()): print i, j 
+	#file = "hmda_sample.csv"
+	#sc = SparkContext("local", "MSA Cluster")
+
+	#data = sc.textFile(file).map(mapper)	
+	
+	#data_output = data.reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1], x[2] + y[2], x[3] + y[3]))
+
+	#for i, j in enumerate(data_output.collect()): print i, j 
 	
 	#for i in logData.collect():
 	#	print i 
