@@ -1,4 +1,5 @@
 from pyspark import SparkContext
+import sys
 
 def mapper(line):
 	if line.startswith('tract_to_msamd_income'):
@@ -50,23 +51,5 @@ if __name__=='__main__':
 	
 	sc = SparkContext(appName = "MSA Features") 
 	msa_data = sc.textFile(sys.argv[1]).map(mapper)	
-	msa_data_grouped = msa_data.reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1], x[2] + y[2], x[3] + y[3]))
-	
-
-	#file = "hmda_sample.csv"
-	#sc = SparkContext("local", "MSA Cluster")
-
-	#data = sc.textFile(file).map(mapper)	
-	
-	#data_output = data.reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1], x[2] + y[2], x[3] + y[3]))
-
-	#for i, j in enumerate(data_output.collect()): print i, j 
-	
-	#for i in logData.collect():
-	#	print i 
-	
-	#outputMap = logData.map(mapper) 
-	
-	#output = outputMap.reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])) 	
-	#print output.collect() 
+	msa_data_grouped = msa_data.reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1], x[2] + y[2], x[3] + y[3])).saveAsTextFile(sys.argv[2]) 	
 	
